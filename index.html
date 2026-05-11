@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -180,6 +179,62 @@
     @keyframes fR{0%,100%{transform:translateY(-50%) scaleX(-1) rotate(-12deg);}50%{transform:translateY(calc(-50% - 8px)) scaleX(-1) rotate(10deg);}}
     @keyframes fadeDown{from{opacity:0;transform:translateY(-16px);}to{opacity:1;transform:translateY(0);}}
     @keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:0.65;transform:translateY(0);}}
+
+    /* ══ PART TABS ══ */
+    .part-tabs {
+      position: relative; z-index: 20;
+      display: flex; justify-content: center;
+      gap: 12px; padding: 0 20px 28px;
+      flex-wrap: wrap;
+    }
+    .part-tab {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 22px;
+      border-radius: 30px;
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(0.82rem,2.2vw,1rem);
+      letter-spacing: 1px;
+      cursor: pointer; border: none;
+      transition: all 0.35s ease;
+      text-decoration: none;
+    }
+    .part-tab-1 {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-bd);
+      color: rgba(255,255,255,0.6);
+      backdrop-filter: blur(12px);
+    }
+    .part-tab-1.active,
+    .part-tab-1:hover {
+      background: linear-gradient(135deg,rgba(91,45,142,0.55),rgba(99,102,241,0.45));
+      border-color: var(--blue-dream);
+      color: var(--white);
+      box-shadow: 0 6px 22px rgba(99,102,241,0.35);
+      transform: translateY(-2px);
+    }
+    .part-tab-2 {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-bd);
+      color: rgba(255,255,255,0.6);
+      backdrop-filter: blur(12px);
+    }
+    .part-tab-2.active,
+    .part-tab-2:hover {
+      background: linear-gradient(135deg,rgba(91,45,142,0.55),rgba(217,70,239,0.45));
+      border-color: var(--pink-dream);
+      color: var(--white);
+      box-shadow: 0 6px 22px rgba(217,70,239,0.38);
+      transform: translateY(-2px);
+    }
+    .tab-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 22px; height: 22px; border-radius: 50%;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.72rem; font-weight: 700;
+      background: rgba(255,255,255,0.15);
+    }
+    .part-tab-1.active .tab-badge { background: var(--blue-dream); }
+    .part-tab-2.active .tab-badge { background: var(--pink-dream); }
 
     /* ══ READER ══ */
     .reader-section {
@@ -419,6 +474,23 @@
       color:var(--ink-faint); opacity:0.52;
       text-align:right; margin-top:10px;
     }
+    .part-banner {
+      display:flex; align-items:center; justify-content:center;
+      gap:8px; padding:7px 16px; border-radius:20px; margin-bottom:10px;
+      font-family:'Dancing Script',cursive;
+      font-size:clamp(0.7rem,2vw,0.88rem);
+      letter-spacing:1px;
+    }
+    .part-banner-1 {
+      background:rgba(99,102,241,0.15);
+      border:1px solid rgba(99,102,241,0.3);
+      color:rgba(99,102,241,1);
+    }
+    .part-banner-2 {
+      background:rgba(217,70,239,0.13);
+      border:1px solid rgba(217,70,239,0.3);
+      color:rgba(217,70,239,1);
+    }
 
     /* ══ PAGE INDICATOR ══ */
     .page-indicator {
@@ -506,8 +578,6 @@
       box-shadow:0 18px 45px rgba(0,0,0,0.38);
       margin-bottom:32px;
     }
-
-    /* Form row — 2 columns on tablet+, 1 column on mobile */
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -515,11 +585,8 @@
       margin-bottom: 13px;
     }
     @media (max-width: 580px) {
-      .form-row {
-        grid-template-columns: 1fr;
-      }
+      .form-row { grid-template-columns: 1fr; }
     }
-
     .ig { display:flex; flex-direction:column; gap:5px; }
     .ig.full { position:relative; }
     .ig label {
@@ -538,8 +605,6 @@
       transition:all 0.3s ease;
       width: 100%;
     }
-
-    /* ══ SELECT — fully contained, custom arrow ══ */
     .ig select {
       width: 100%;
       background: rgba(255,255,255,0.05);
@@ -551,27 +616,20 @@
       padding: 10px 36px 10px 12px;
       outline: none;
       transition: all 0.3s ease;
-      /* Remove native arrow */
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
-      /* Custom gold arrow */
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23f0d080' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 12px center;
       background-size: 10px;
-      /* Prevent overflow */
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
       cursor: pointer;
-      /* Keep glass background alongside arrow image */
       background-color: rgba(255,255,255,0.05);
     }
-    .ig select option {
-      background: var(--purple-mid);
-      color: var(--white);
-    }
+    .ig select option { background: var(--purple-mid); color: var(--white); }
     .ig input::placeholder,.ig textarea::placeholder { color:rgba(255,255,255,0.24); }
     .ig input:focus,
     .ig select:focus,
@@ -742,6 +800,18 @@
   <div class="header-glow"></div>
 </header>
 
+<!-- ═══ PART TABS ═══ -->
+<div class="part-tabs">
+  <button class="part-tab part-tab-1 active" id="tab1" onclick="switchPart(1)">
+    <span class="tab-badge">1</span>
+    Part One — The Beginning
+  </button>
+  <button class="part-tab part-tab-2" id="tab2" onclick="switchPart(2)">
+    <span class="tab-badge">2</span>
+    Part Two — The Weight
+  </button>
+</div>
+
 <!-- ═══ BOOK READER ═══ -->
 <main class="reader-section">
   <div class="book-scene">
@@ -751,7 +821,6 @@
       <div class="book" id="book">
         <div class="flip-stage" id="flipStage">
           <div class="pages-stack">
-
             <div class="page page-back" id="pageBack">
               <div class="page-surface"></div>
               <div class="page-lines"></div>
@@ -760,7 +829,6 @@
               <div class="page-edge-shadow"></div>
               <div class="page-curl"></div>
             </div>
-
             <div class="page page-front" id="pageFront">
               <div class="page-surface"></div>
               <div class="page-lines"></div>
@@ -769,7 +837,6 @@
               <div class="page-edge-shadow"></div>
               <div class="page-curl"></div>
             </div>
-
           </div>
           <div class="book-spine"></div>
           <div class="book-floor-shadow"></div>
@@ -779,7 +846,7 @@
       <div class="page-indicator">
         <div class="pi-dots" id="piDots"></div>
         <span class="pi-sep">·</span>
-        <span id="piText" style="font-size:0.85rem;">Page 1 of 8</span>
+        <span id="piText" style="font-size:0.85rem;">Page 1</span>
       </div>
       <div class="swipe-hint">👆 Swipe left / right &nbsp;·&nbsp; or use arrow keys</div>
     </div>
@@ -857,14 +924,14 @@
 
 <script>
 /* ══════════════════════════════════════════════════════
-   PASTE YOUR GOOGLE APPS SCRIPT URL HERE
+   APPS SCRIPT URL
 ══════════════════════════════════════════════════════ */
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbznD9eZqgi7Hl3nIaCvn5SSNFo_AYYiFWCxHg2T3RWNItgIlM5RRxw2iuI7sDVmY60sBQ/exec";  // ← "https://script.google.com/macros/s/XXX/exec"
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbznD9eZqgi7Hl3nIaCvn5SSNFo_AYYiFWCxHg2T3RWNItgIlM5RRxw2iuI7sDVmY60sBQ/exec";
 
 /* ══════════════════════════════════════════════════════
-   PAGES
+   PART ONE PAGES
 ══════════════════════════════════════════════════════ */
-const PAGES = [
+const PAGES_PART1 = [
   /* ── PAGE 0 — COVER ── */
   {
     html:`
@@ -875,6 +942,26 @@ const PAGES = [
         <div class="cover-title-sub">A Story of Four Friends, A Thousand Miles,<br/>and the Feelings That Never Found Their Voice</div>
         <div class="cover-ornament">— ✦ —</div>
         <div class="cover-author">A story written in silence, carried in the heart</div>
+        <button onclick="switchPart(2)" style="
+          display:inline-flex;align-items:center;gap:8px;
+          margin-top:16px;
+          padding:10px 22px;
+          background:linear-gradient(135deg,#5b2d8e,#d946ef);
+          border:1px solid rgba(255,255,255,0.18);
+          border-radius:30px;
+          color:#fff;
+          font-family:'Dancing Script',cursive;
+          font-size:clamp(0.82rem,2.5vw,1.05rem);
+          letter-spacing:1px;
+          cursor:pointer;
+          box-shadow:0 6px 22px rgba(217,70,239,0.38);
+          transition:all 0.3s ease;
+        "
+        onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 30px rgba(217,70,239,0.6)';"
+        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 22px rgba(217,70,239,0.38)';"
+        >
+          📖 Part Two — Continue ②
+        </button>
       </div>
       <div class="page-number-stamp">i</div>
     `
@@ -896,7 +983,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 2 — INTRODUCTION CONTINUED ── */
+  /* ── PAGE 2 ── */
   {
     html:`
       <div class="page-chapter">Introduction — continued</div>
@@ -913,7 +1000,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 3 — CHAPTER ONE ── */
+  /* ── PAGE 3 ── */
   {
     html:`
       <div class="page-date">Before She Arrived</div>
@@ -930,7 +1017,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 4 — CHAPTER ONE CONTINUED ── */
+  /* ── PAGE 4 ── */
   {
     html:`
       <div class="page-date">Chapter One — continued</div>
@@ -946,7 +1033,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 5 — CHAPTER ONE: CHARAN LEAVES ── */
+  /* ── PAGE 5 ── */
   {
     html:`
       <div class="page-date">Chapter One — continued</div>
@@ -964,7 +1051,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 6 — CHAPTER TWO ── */
+  /* ── PAGE 6 ── */
   {
     html:`
       <div class="page-date">A Beautiful Surprise From a Small Screen</div>
@@ -980,7 +1067,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 7 — CHAPTER TWO: THE CAFÉ ── */
+  /* ── PAGE 7 ── */
   {
     html:`
       <div class="page-date">Chapter Two — continued</div>
@@ -997,7 +1084,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 8 — CHAPTER THREE ── */
+  /* ── PAGE 8 ── */
   {
     html:`
       <div class="page-date">Four Friends and a World That Felt Like Theirs</div>
@@ -1013,7 +1100,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 9 — CHAPTER THREE CONTINUED ── */
+  /* ── PAGE 9 ── */
   {
     html:`
       <div class="page-date">Chapter Three — continued</div>
@@ -1030,7 +1117,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 10 — CHAPTER THREE: KAVERI ── */
+  /* ── PAGE 10 ── */
   {
     html:`
       <div class="page-date">Chapter Three — continued</div>
@@ -1047,7 +1134,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 11 — CHAPTER FOUR ── */
+  /* ── PAGE 11 ── */
   {
     html:`
       <div class="page-date">When the Light Went Away</div>
@@ -1065,7 +1152,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 12 — CHAPTER FIVE ── */
+  /* ── PAGE 12 ── */
   {
     html:`
       <div class="page-date">A Signature, a Chance, and a Stubborn Friend</div>
@@ -1081,7 +1168,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 13 — CHAPTER FIVE CONTINUED ── */
+  /* ── PAGE 13 ── */
   {
     html:`
       <div class="page-date">Chapter Five — continued</div>
@@ -1098,7 +1185,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 14 — CHAPTER SIX ── */
+  /* ── PAGE 14 ── */
   {
     html:`
       <div class="page-date">When Suhas Left for Bengaluru</div>
@@ -1115,7 +1202,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 15 — CHAPTER SEVEN ── */
+  /* ── PAGE 15 ── */
   {
     html:`
       <div class="page-date">Two Friends, One Conversation, and a Step Backwards</div>
@@ -1132,7 +1219,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 16 — CHAPTER SEVEN CONTINUED ── */
+  /* ── PAGE 16 ── */
   {
     html:`
       <div class="page-date">Chapter Seven — continued</div>
@@ -1149,7 +1236,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 17 — CHAPTER SEVEN: THE BREAK ── */
+  /* ── PAGE 17 ── */
   {
     html:`
       <div class="page-date">Chapter Seven — continued</div>
@@ -1166,7 +1253,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 18 — CHAPTER EIGHT ── */
+  /* ── PAGE 18 ── */
   {
     html:`
       <div class="page-date">Her Happiness, His Conflict</div>
@@ -1183,7 +1270,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 19 — CHAPTER NINE ── */
+  /* ── PAGE 19 ── */
   {
     html:`
       <div class="page-date">Two Thoughts Running at Once</div>
@@ -1201,7 +1288,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 20 — CHAPTER NINE CONTINUED ── */
+  /* ── PAGE 20 ── */
   {
     html:`
       <div class="page-date">Chapter Nine — continued</div>
@@ -1219,7 +1306,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 21 — CHAPTER TEN ── */
+  /* ── PAGE 21 ── */
   {
     html:`
       <div class="page-date">What He Knew, and What He Felt Anyway</div>
@@ -1236,7 +1323,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 22 — CHAPTER TEN CONTINUED ── */
+  /* ── PAGE 22 ── */
   {
     html:`
       <div class="page-date">Chapter Ten — continued</div>
@@ -1253,7 +1340,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 23 — CHAPTER ELEVEN ── */
+  /* ── PAGE 23 ── */
   {
     html:`
       <div class="page-date">Pushing Mental Strength to Its Limit</div>
@@ -1270,7 +1357,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 24 — CHAPTER ELEVEN: THE VOLCANO ── */
+  /* ── PAGE 24 ── */
   {
     html:`
       <div class="page-date">Chapter Eleven — continued</div>
@@ -1288,7 +1375,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 25 — CHAPTER TWELVE ── */
+  /* ── PAGE 25 ── */
   {
     html:`
       <div class="page-date">The Feeling That Has No Easy Name</div>
@@ -1305,7 +1392,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 26 — CHAPTER THIRTEEN ── */
+  /* ── PAGE 26 ── */
   {
     html:`
       <div class="page-date">The Words of the Anonymous</div>
@@ -1324,7 +1411,7 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 27 — CHAPTER FOURTEEN ── */
+  /* ── PAGE 27 ── */
   {
     html:`
       <div class="page-date">The One Thing He Keeps Waiting For</div>
@@ -1343,19 +1430,38 @@ const PAGES = [
     `
   },
 
-  /* ── PAGE 28 — EPILOGUE ── */
+  /* ── PAGE 28 — EPILOGUE PART ONE ── */
   {
     html:`
-      <div class="page-chapter">Epilogue</div>
+      <div class="page-chapter">Epilogue — Part One</div>
       <div class="page-title">Maybe</div>
       <div class="page-divider"><div class="page-divider-line"></div><div class="page-divider-icon">🌹</div><div class="page-divider-line"></div></div>
       <div class="page-body">
         <div class="page-quote">"I'm not the most important person in your life. But I hope that when you hear my name, you'll smile and say, 'Hey — that's my friend.'"</div>
         <p style="text-align:center; font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--ink); margin: 16px 0;">"Maybe."</p>
-        <p><em>To be continued...</em></p>
+        <p><em>The story continues in Part Two…</em></p>
         <p>Some feelings are never spoken aloud. Some words are never said. But they exist — quietly, stubbornly, beautifully — in the space between what we feel and what we choose to carry alone.</p>
-        <p>This is the story of those words.</p>
         <div class="page-quote">The words he never said.</div>
+        <button onclick="switchPart(2)" style="
+          display:inline-flex;align-items:center;gap:8px;
+          margin-top:14px;
+          padding:10px 22px;
+          background:linear-gradient(135deg,#5b2d8e,#d946ef);
+          border:1px solid rgba(255,255,255,0.18);
+          border-radius:30px;
+          color:#fff;
+          font-family:'Dancing Script',cursive;
+          font-size:clamp(0.82rem,2.5vw,1.05rem);
+          letter-spacing:1px;
+          cursor:pointer;
+          box-shadow:0 6px 22px rgba(217,70,239,0.38);
+          transition:all 0.3s ease;
+        "
+        onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 30px rgba(217,70,239,0.6)';"
+        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 22px rgba(217,70,239,0.38)';"
+        >
+          📖 Continue to Part Two ②
+        </button>
       </div>
       <div class="page-signature">— The Anonymous Person 🌹</div>
       <div class="page-number-stamp">26</div>
@@ -1364,11 +1470,183 @@ const PAGES = [
 ];
 
 /* ══════════════════════════════════════════════════════
+   PART TWO PAGES
+══════════════════════════════════════════════════════ */
+const PAGES_PART2 = [
+
+  /* ── PART 2 COVER ── */
+  {
+    html:`
+      <div class="cover-art">
+        <div class="cover-ornament">— ✦ —</div>
+        <div class="cover-rose">🌹</div>
+        <div class="cover-title-main">The Words He<br/>Never Said</div>
+        <div class="cover-title-sub">Part Two — The Weight of What Was Never Spoken</div>
+        <div class="cover-ornament">— ✦ —</div>
+        <div class="cover-author">A story written in silence, carried in the heart</div>
+        <button onclick="switchPart(1)" style="
+          display:inline-flex;align-items:center;gap:8px;
+          margin-top:16px;
+          padding:10px 22px;
+          background:linear-gradient(135deg,#1e3a8a,#6366f1);
+          border:1px solid rgba(255,255,255,0.18);
+          border-radius:30px;
+          color:#fff;
+          font-family:'Dancing Script',cursive;
+          font-size:clamp(0.82rem,2.5vw,1.05rem);
+          letter-spacing:1px;
+          cursor:pointer;
+          box-shadow:0 6px 22px rgba(99,102,241,0.38);
+          transition:all 0.3s ease;
+        "
+        onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 30px rgba(99,102,241,0.6)';"
+        onmouseout="this.style.transform='';this.style.boxShadow='0 6px 22px rgba(99,102,241,0.38)';"
+        >
+          ← Back to Part One ①
+        </button>
+      </div>
+      <div class="page-number-stamp">Part II · i</div>
+    `
+  },
+
+  /* ── PART 2 · PAGE 1 ── */
+  {
+    html:`
+      <div class="part-banner part-banner-2">✦ Part Two — The Weight of What Was Never Spoken ✦</div>
+      <div class="page-date">After Many Weeks</div>
+      <div class="page-chapter">Chapter Thirteen</div>
+      <div class="page-title"><em>The Weeks That Passed</em></div>
+      <div class="page-divider"><div class="page-divider-line"></div><div class="page-divider-icon">🌫️</div><div class="page-divider-line"></div></div>
+      <div class="page-body">
+        <p class="drop-cap">After many weeks passed, on a weekend — it was a Saturday — they were all together again. All four of them.</p>
+        <p>Narpath was still caught between saying something and saying nothing. He genuinely didn't know what came next.</p>
+        <p>Day by day, his attachment towards Arpitha kept increasing — growing so deep that he couldn't let it go, and couldn't hold it either. His mind was very disturbed. He was very sad about the situation. He didn't want to act weird in front of them — but whenever he saw Arpitha, his heart felt like it was crushing, uncontrollably.</p>
+        <p>He was in a state where he couldn't directly express the depth of his attachment to her — because he liked her so much in a good way, and because of that very reason, he didn't want to say anything. He didn't want to disturb her by letting her know. He knew it would make her sad. And he knew she didn't have the same feeling towards him to even understand his situation.</p>
+        <div class="page-quote">He knew all of this. And still, he couldn't stop.</div>
+      </div>
+      <div class="page-number-stamp">Part II · 1</div>
+    `
+  },
+
+  /* ── PART 2 · PAGE 2 ── */
+  {
+    html:`
+      <div class="page-date">The Question With No Answer</div>
+      <div class="page-chapter">Chapter Fourteen</div>
+      <div class="page-title"><em>Why Did This Happen Now?</em></div>
+      <div class="page-divider"><div class="page-divider-line"></div><div class="page-divider-icon">❓</div><div class="page-divider-line"></div></div>
+      <div class="page-body">
+        <p class="drop-cap">Knowing all of that, he started to feel — why did this happen now, in the middle of everything?</p>
+        <p>Why didn't Suhas restrict his other two friends from getting close and attached to her from the very beginning? That, Narpath felt quietly, was the main mistake. Suhas and Kaveri had never openly said they were committed. If that had been clearly said from the very beginning — from the day they first met her — Narpath's closeness and attachment towards Arpitha would never have grown this deep. He would have kept a normal, formal, casual friendship with her. Everything would have been fine.</p>
+        <p>But instead — after all four of them had become so close, after the attachment had already grown deep and real — Suhas, in the middle of it all, started to feel for her and care as girlfriend. That was the point where everything changed.</p>
+        <div class="page-quote">If he had said something to his friends about it in the beginning itself, all of these problems would have been avoided entirely. But it wasn't said. And now it had broken Narpath's heart — quietly, deeply — and pushed him into avoiding her without being able to say a single word about why.</div>
+      </div>
+      <div class="page-number-stamp">Part II · 2</div>
+    `
+  },
+
+  /* ── PART 2 · PAGE 3 ── */
+  {
+    html:`
+      <div class="page-date">The Saturday and the Gift</div>
+      <div class="page-chapter">Chapter Fifteen</div>
+      <div class="page-title"><em>A Surprise Carried With Love</em></div>
+      <div class="page-divider"><div class="page-divider-line"></div><div class="page-divider-icon">🎁</div><div class="page-divider-line"></div></div>
+      <div class="page-body">
+        <p class="drop-cap">Arpitha never had any feeling towards Narpath — not in the way he felt for her. She was attached, in that same deep way, to Suhas. And Narpath knew that too.</p>
+        <p>It was a Saturday. And in the middle of all of this — in the middle of this tight, painful, unspoken situation — Arpitha surprised all three boys with T-shirts she had quietly bought from Bangalore. A surprise, carried with love, given with that warmth that was so completely her.</p>
+        <p>When she handed Narpath his gift — in that moment, in that condition — he was already in an uncontrollable state of attachment towards her, already staying silent, already unable to express anything. And this gift — his favourite kind of gift, from his favourite person — made everything inside him unbearably complicated. He couldn't thank her openly. Not in front of everyone. Not in front of Suhas. It made everything even worse.</p>
+        <p>He became so silent. He couldn't say anything. Couldn't think anything. Couldn't do anything.</p>
+        <div class="page-quote">Suhas noticed the silence and asked him about it — again and again. But only God knows the weight his heart was carrying in that moment.</div>
+        <p>He was feeling crushed inside. And he was smiling on the outside — carrying his untold feeling entirely alone.</p>
+      </div>
+      <div class="page-number-stamp">Part II · 3</div>
+    `
+  },
+
+  /* ── PART 2 · PAGE 4 ── */
+  {
+    html:`
+      <div class="page-date">What Was Happening Naturally</div>
+      <div class="page-chapter">Chapter Sixteen</div>
+      <div class="page-title"><em>The Drifting</em></div>
+      <div class="page-divider"><div class="page-divider-line"></div><div class="page-divider-icon">🌊</div><div class="page-divider-line"></div></div>
+      <div class="page-body">
+        <p class="drop-cap">In the same way, Arpitha was growing closer to Suhas day by day — daily calls, him picking her up, sharing food, eventually living in the same place. She was emotionally connecting with him more and more as the days passed. And slowly, she was detaching from the other two friends — drawn closer to Suhas through his care, his funny talks, his kindness, his warmth.</p>
+        <div class="page-quote">It was happening naturally.</div>
+        <p>There was nothing wrong in it. Nothing unfair. It was simply life — moving in the direction it was always going to move. Two people finding each other, slowly, quietly, completely.</p>
+        <p>And Narpath watched it happen. Every day. From a distance he had chosen — and a distance that was destroying him.</p>
+      </div>
+      <div class="page-number-stamp">Part II · 4</div>
+    `
+  },
+
+  /* ── PART 2 · PAGE 5 ── */
+  {
+    html:`
+      <div class="page-date">The Sunday He Stayed Home</div>
+      <div class="page-chapter">Chapter Seventeen</div>
+      <div class="page-title"><em>The Day He Chose Not to Go</em></div>
+      <div class="page-divider"><div class="page-divider-line"></div><div class="page-divider-icon">🏠</div><div class="page-divider-line"></div></div>
+      <div class="page-body">
+        <p class="drop-cap">Narpath thought about avoiding the Sunday meetup — letting them enjoy their time together privately. He knew that if he went in this condition, his mind would trigger again. He knew he would sit silently. And that silence would feel like a waste of everyone's time.</p>
+        <p>He already had a headache from thinking about all of this. He was in a very bad condition — he couldn't eat, couldn't do anything, couldn't focus. Sleeping had become very difficult. He had started avoiding all his essentials — food, sleep, rest, peace — everything. So he decided not to meet them again in this condition, not wanting to make them feel bad because of him.</p>
+        <p>He was extremely sorry for all of it.</p>
+        <p>He kept fighting with his own thoughts. And he kept remembering something Arpitha had once said to him —</p>
+        <div class="page-quote">"If you get attached again, you will only suffer again. Not Mee!"</div>
+        <p>Unlike her, he didn't have options. He was going through his most difficult time. And he was going through it alone.</p>
+      </div>
+      <div class="page-number-stamp">Part II · 5</div>
+    `
+  },
+
+  /* ── PART 2 · PAGE 6 — AUTHOR'S NOTE ── */
+  {
+    html:`
+      <div class="page-chapter">A Note From the Author</div>
+      <div class="page-title"><em>To You, Dear Reader</em></div>
+      <div class="page-divider"><div class="page-divider-line"></div><div class="page-divider-icon">🪶</div><div class="page-divider-line"></div></div>
+      <div class="page-body">
+        <p class="drop-cap">Finally — the author's words to the readers:</p>
+        <p>He is truly, extremely grateful. And sincerely sorry — if this story made you feel sad.</p>
+        <p>Once again, with a full and honest heart —</p>
+        <p style="text-align:center;font-family:'Dancing Script',cursive;font-size:1.1rem;color:var(--ink);margin:10px 0;">Your always-loving, anonymous Author.</p>
+        <p style="text-align:center;font-family:'Playfair Display',serif;color:var(--ink);">Thank you.</p>
+        <p><em>The story may or may not continue.</em></p>
+        <p>And before the page closes — there is one more thing Narpath wants to say.</p>
+        <div class="page-quote">The cuteness of Kaveri never faded. The kindness of Kaveri never faded. The sweetness of Kaveri — not even for a single moment — ever faded.</div>
+      </div>
+      <div class="page-number-stamp">Part II · 6</div>
+    `
+  },
+
+  /* ── PART 2 · PAGE 7 — FINAL ── */
+  {
+    html:`
+      <div class="page-chapter">The Last Page</div>
+      <div class="page-title"><em>What Cannot Be Unsaid</em></div>
+      <div class="page-divider"><div class="page-divider-line"></div><div class="page-divider-icon">🌹</div><div class="page-divider-line"></div></div>
+      <div class="page-body">
+        <p class="drop-cap">Narpath is so deeply, so sincerely thankful to her — for everything she gave him, knowingly and unknowingly. For the memories, for the warmth, for the beautiful journey she became a part of — without even realising how much it meant to him.</p>
+        <p>He cannot unlove her. Even knowing she doesn't feel the same way. Even knowing she hurt him — knowingly or unknowingly — many times. Even through all of that — he simply cannot stop.</p>
+        <p>He cannot stop being grateful. He cannot stop caring. He cannot stop describing what she meant to him — and there are truly no words big enough to finish that description.</p>
+        <p>So he will simply leave it here, with the most honest words he has —</p>
+        <div class="page-quote">"Thank you so much for everything." ❣️</div>
+        <p style="text-align:center;font-family:'Playfair Display',serif;font-size:1rem;color:var(--ink);margin:12px 0;font-style:italic;">— End of Part Two —</p>
+      </div>
+      <div class="page-signature">— The Anonymous Person 🌹</div>
+      <div class="page-number-stamp">Part II · 7</div>
+    `
+  }
+];
+
+/* ══════════════════════════════════════════════════════
    STATE
 ══════════════════════════════════════════════════════ */
-let current    = 0;
-let isFlipping = false;
-const total    = PAGES.length;
+let currentPart = 1;
+let PAGES       = PAGES_PART1;
+let current     = 0;
+let isFlipping  = false;
 
 /* ══════════════════════════════════════════════════════
    DOM
@@ -1383,9 +1661,33 @@ const piDots       = document.getElementById('piDots');
 const piText       = document.getElementById('piText');
 
 /* ══════════════════════════════════════════════════════
+   SWITCH PART
+══════════════════════════════════════════════════════ */
+function switchPart(part) {
+  if (part === currentPart) return;
+  currentPart = part;
+  PAGES   = part === 1 ? PAGES_PART1 : PAGES_PART2;
+  current = 0;
+
+  /* Update tab styles */
+  document.getElementById('tab1').classList.toggle('active', part === 1);
+  document.getElementById('tab2').classList.toggle('active', part === 2);
+
+  /* Instant page swap — no flip animation needed */
+  backContent.innerHTML  = '';
+  renderPage(0, frontContent);
+  buildDots();
+  updateUI();
+
+  /* Scroll to top of reader */
+  document.querySelector('.reader-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ══════════════════════════════════════════════════════
    RENDER
 ══════════════════════════════════════════════════════ */
 function renderPage(idx, container) {
+  const total = PAGES.length;
   container.innerHTML = (idx >= 0 && idx < total) ? PAGES[idx].html : '';
 }
 
@@ -1402,7 +1704,7 @@ function buildDots() {
   });
 }
 function updateDots() {
-  document.querySelectorAll('.pi-dot').forEach((d,i) =>
+  document.querySelectorAll('.pi-dot').forEach((d, i) =>
     d.classList.toggle('active', i === current));
 }
 
@@ -1410,10 +1712,11 @@ function updateDots() {
    UI
 ══════════════════════════════════════════════════════ */
 function updateUI() {
+  const total = PAGES.length;
   prevBtn.disabled = current <= 0;
   nextBtn.disabled = current >= total - 1;
-  progressFill.style.width = (total > 1 ? (current/(total-1))*100 : 100) + '%';
-  piText.textContent = `Page ${current+1} of ${total}`;
+  progressFill.style.width = (total > 1 ? (current / (total - 1)) * 100 : 100) + '%';
+  piText.textContent = `Page ${current + 1} of ${total}`;
   updateDots();
 }
 
@@ -1421,7 +1724,7 @@ function updateUI() {
    FLIP NEXT
 ══════════════════════════════════════════════════════ */
 function goNext() {
-  if (isFlipping || current >= total - 1) return;
+  if (isFlipping || current >= PAGES.length - 1) return;
   isFlipping = true;
   renderPage(current + 1, backContent);
   flipStage.classList.add('going-next');
@@ -1482,66 +1785,66 @@ nextBtn.addEventListener('click', goNext);
    KEYBOARD
 ══════════════════════════════════════════════════════ */
 document.addEventListener('keydown', e => {
-  if (['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); goNext(); }
-  if (['ArrowLeft','ArrowUp'].includes(e.key))         { e.preventDefault(); goPrev(); }
+  if (['ArrowRight', 'ArrowDown', ' '].includes(e.key)) { e.preventDefault(); goNext(); }
+  if (['ArrowLeft', 'ArrowUp'].includes(e.key))          { e.preventDefault(); goPrev(); }
 });
 
 /* ══════════════════════════════════════════════════════
    TOUCH SWIPE
 ══════════════════════════════════════════════════════ */
-let tx=0, ty=0, tt=0;
-document.getElementById('book').addEventListener('touchstart', e=>{
-  tx=e.touches[0].clientX; ty=e.touches[0].clientY; tt=Date.now();
-},{passive:true});
-document.getElementById('book').addEventListener('touchend', e=>{
-  const dx=e.changedTouches[0].clientX-tx;
-  const dy=e.changedTouches[0].clientY-ty;
-  if(Date.now()-tt<500 && Math.abs(dx)>40 && Math.abs(dx)>Math.abs(dy)*1.2){
-    dx<0 ? goNext() : goPrev();
+let tx = 0, ty = 0, tt = 0;
+document.getElementById('book').addEventListener('touchstart', e => {
+  tx = e.touches[0].clientX; ty = e.touches[0].clientY; tt = Date.now();
+}, { passive: true });
+document.getElementById('book').addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - tx;
+  const dy = e.changedTouches[0].clientY - ty;
+  if (Date.now() - tt < 500 && Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+    dx < 0 ? goNext() : goPrev();
   }
-},{passive:true});
+}, { passive: true });
 
 /* ══════════════════════════════════════════════════════
    BACKGROUND FX
 ══════════════════════════════════════════════════════ */
-function createStars(){
-  const l=document.getElementById('starsLayer');
-  const n=window.innerWidth<600?50:110;
-  for(let i=0;i<n;i++){
-    const s=document.createElement('div');
-    s.className='star';
-    const sz=Math.random()*2.6+0.4;
-    s.style.cssText=`width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-duration:${Math.random()*5+2}s;animation-delay:${Math.random()*6}s;`;
+function createStars() {
+  const l = document.getElementById('starsLayer');
+  const n = window.innerWidth < 600 ? 50 : 110;
+  for (let i = 0; i < n; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const sz = Math.random() * 2.6 + 0.4;
+    s.style.cssText = `width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-duration:${Math.random()*5+2}s;animation-delay:${Math.random()*6}s;`;
     l.appendChild(s);
   }
 }
-function createShootingStars(){
-  const l=document.getElementById('starsLayer');
-  for(let i=0;i<5;i++){
-    const s=document.createElement('div');
-    s.className='shooting-star';
-    s.style.cssText=`width:${Math.random()*120+60}px;top:${Math.random()*60}%;left:${Math.random()*40}%;animation-duration:${Math.random()*4+5}s;animation-delay:${Math.random()*12}s;`;
+function createShootingStars() {
+  const l = document.getElementById('starsLayer');
+  for (let i = 0; i < 5; i++) {
+    const s = document.createElement('div');
+    s.className = 'shooting-star';
+    s.style.cssText = `width:${Math.random()*120+60}px;top:${Math.random()*60}%;left:${Math.random()*40}%;animation-duration:${Math.random()*4+5}s;animation-delay:${Math.random()*12}s;`;
     l.appendChild(s);
   }
 }
-function createParticles(){
-  const l=document.getElementById('particlesLayer');
-  const n=window.innerWidth<600?14:30;
-  const cols=['rgba(255,255,255,0.5)','rgba(240,208,128,0.5)','rgba(217,70,239,0.4)','rgba(99,102,241,0.4)'];
-  for(let i=0;i<n;i++){
-    const p=document.createElement('div');
-    p.className='particle';
-    const sz=Math.random()*4+1;
-    p.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;background:${cols[Math.floor(Math.random()*cols.length)]};animation-duration:${Math.random()*16+10}s;animation-delay:${Math.random()*14}s;`;
+function createParticles() {
+  const l = document.getElementById('particlesLayer');
+  const n = window.innerWidth < 600 ? 14 : 30;
+  const cols = ['rgba(255,255,255,0.5)', 'rgba(240,208,128,0.5)', 'rgba(217,70,239,0.4)', 'rgba(99,102,241,0.4)'];
+  for (let i = 0; i < n; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const sz = Math.random() * 4 + 1;
+    p.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random()*100}%;background:${cols[Math.floor(Math.random()*cols.length)]};animation-duration:${Math.random()*16+10}s;animation-delay:${Math.random()*14}s;`;
     l.appendChild(p);
   }
 }
-function createSparkles(){
-  const l=document.getElementById('particlesLayer');
-  for(let i=0;i<10;i++){
-    const sp=document.createElement('div');
-    sp.className='sparkle';
-    sp.style.cssText=`top:${20+Math.random()*60}%;left:${5+Math.random()*90}%;width:${Math.random()*5+2}px;height:${Math.random()*5+2}px;background:${Math.random()>0.5?'rgba(240,208,128,0.8)':'rgba(217,70,239,0.7)'};animation-duration:${Math.random()*3+2}s;animation-delay:${Math.random()*5}s;`;
+function createSparkles() {
+  const l = document.getElementById('particlesLayer');
+  for (let i = 0; i < 10; i++) {
+    const sp = document.createElement('div');
+    sp.className = 'sparkle';
+    sp.style.cssText = `top:${20+Math.random()*60}%;left:${5+Math.random()*90}%;width:${Math.random()*5+2}px;height:${Math.random()*5+2}px;background:${Math.random()>0.5?'rgba(240,208,128,0.8)':'rgba(217,70,239,0.7)'};animation-duration:${Math.random()*3+2}s;animation-delay:${Math.random()*5}s;`;
     l.appendChild(sp);
   }
 }
@@ -1551,18 +1854,18 @@ function createSparkles(){
 ══════════════════════════════════════════════════════ */
 const CKEY      = 'diary_comments_v4';
 const isOnline  = () => !!APPS_SCRIPT_URL;
-const loadLocal = () => { try{ return JSON.parse(localStorage.getItem(CKEY))||[]; }catch{ return []; } };
+const loadLocal = () => { try { return JSON.parse(localStorage.getItem(CKEY)) || []; } catch { return []; } };
 const saveLocal = a  => localStorage.setItem(CKEY, JSON.stringify(a));
 
-function timeAgo(ts){
+function timeAgo(ts) {
   const d = Date.now() - Number(ts);
-  if(d < 60000)     return 'Just now';
-  if(d < 3600000)   return Math.floor(d/60000)+'m ago';
-  if(d < 86400000)  return Math.floor(d/3600000)+'h ago';
-  if(d < 604800000) return Math.floor(d/86400000)+'d ago';
-  return new Date(Number(ts)).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  if (d < 60000)     return 'Just now';
+  if (d < 3600000)   return Math.floor(d / 60000) + 'm ago';
+  if (d < 86400000)  return Math.floor(d / 3600000) + 'h ago';
+  if (d < 604800000) return Math.floor(d / 86400000) + 'd ago';
+  return new Date(Number(ts)).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
-const initials = n => (n||'A').trim().split(/\s+/).map(w=>w[0]).join('').toUpperCase().slice(0,2)||'A';
+const initials = n => (n || 'A').trim().split(/\s+/).map(w => w[0]).join('').toUpperCase().slice(0, 2) || 'A';
 const GRADS = [
   'linear-gradient(135deg,#7c3aed,#ec4899)',
   'linear-gradient(135deg,#0891b2,#7c3aed)',
@@ -1571,30 +1874,30 @@ const GRADS = [
   'linear-gradient(135deg,#dc2626,#7c3aed)',
   'linear-gradient(135deg,#0d9488,#9333ea)'
 ];
-const grad = n => { let h=0; for(const c of(n||'A')) h=(h+c.charCodeAt(0))%GRADS.length; return GRADS[h]; };
+const grad = n => { let h = 0; for (const c of (n || 'A')) h = (h + c.charCodeAt(0)) % GRADS.length; return GRADS[h]; };
 const esc  = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
 
 /* ══════════════════════════════════════════════════════
-   COMMENTS — FETCH FROM GOOGLE SHEETS
+   COMMENTS — FETCH
 ══════════════════════════════════════════════════════ */
-async function fetchComments(){
-  if(!isOnline()) return null;
-  try{
+async function fetchComments() {
+  if (!isOnline()) return null;
+  try {
     const res  = await fetch(APPS_SCRIPT_URL + '?action=get&t=' + Date.now());
     const data = await res.json();
     return data.success ? data.comments : null;
-  }catch(e){
+  } catch (e) {
     console.warn('Fetch failed:', e);
     return null;
   }
 }
 
 /* ══════════════════════════════════════════════════════
-   COMMENTS — POST TO GOOGLE SHEETS
+   COMMENTS — POST
 ══════════════════════════════════════════════════════ */
-async function postComment(obj){
-  if(!isOnline()) return false;
-  try{
+async function postComment(obj) {
+  if (!isOnline()) return false;
+  try {
     await fetch(APPS_SCRIPT_URL, {
       method  : 'POST',
       mode    : 'no-cors',
@@ -1602,90 +1905,70 @@ async function postComment(obj){
       body    : JSON.stringify(obj)
     });
     return true;
-  }catch(e){
+  } catch (e) {
     console.warn('Post failed:', e);
     return false;
   }
 }
 
 /* ══════════════════════════════════════════════════════
-   COMMENTS — RENDER CARDS
-   KEY FIX: saves & restores scroll position
-   so page never jumps when DOM is updated
+   COMMENTS — RENDER
 ══════════════════════════════════════════════════════ */
-function renderCards(arr, restoreScroll){
-  /* Save scroll before touching DOM */
-  const sy = window.scrollY;
-
+function renderCards(arr, restoreScroll) {
+  const sy   = window.scrollY;
   const list = document.getElementById('commentsList');
   const none = document.getElementById('noComments');
   document.getElementById('commentCount').textContent = arr.length;
 
-  if(!arr.length){
+  if (!arr.length) {
     list.innerHTML = '';
     none.style.display = 'block';
   } else {
     none.style.display = 'none';
     list.innerHTML = '';
-    [...arr].reverse().forEach((c,i) => {
+    [...arr].reverse().forEach((c, i) => {
       const card = document.createElement('div');
       card.className = 'comment-card';
-      card.style.animationDelay = `${i*0.06}s`;
+      card.style.animationDelay = `${i * 0.06}s`;
       card.innerHTML = `
         <div class="card-header">
           <div class="card-avatar" style="background:${grad(c.name)}">${initials(c.name)}</div>
           <div class="card-meta">
-            <div class="card-name">${esc(c.name||'Anonymous Reader')}</div>
+            <div class="card-name">${esc(c.name || 'Anonymous Reader')}</div>
             <div class="card-time">${timeAgo(c.timestamp)}</div>
           </div>
-          <div class="card-mood">${c.mood||'😊'}</div>
+          <div class="card-mood">${c.mood || '😊'}</div>
         </div>
         <p class="card-text">${esc(c.text)}</p>
       `;
       list.appendChild(card);
     });
   }
-
-  /* Restore scroll position — prevents page jumping */
-  if(restoreScroll !== false){
-    window.scrollTo({ top: sy, behavior: 'instant' });
-  }
+  if (restoreScroll !== false) window.scrollTo({ top: sy, behavior: 'instant' });
 }
 
 /* ══════════════════════════════════════════════════════
-   COMMENTS — LOAD (initial page load only)
-   Does NOT restore scroll on first load — that's fine
-   because user hasn't scrolled yet
+   COMMENTS — LOAD
 ══════════════════════════════════════════════════════ */
-async function loadAndRenderComments(){
+async function loadAndRenderComments() {
   const list = document.getElementById('commentsList');
   list.innerHTML = '<div class="comments-loading">✦ Loading voices…</div>';
 
-  if(isOnline()){
+  if (isOnline()) {
     const remote = await fetchComments();
-    if(remote !== null){
-      /* Pass false — no scroll restore needed on initial load */
-      renderCards(remote, false);
-      return;
-    }
+    if (remote !== null) { renderCards(remote, false); return; }
   }
-
-  /* Fallback to localStorage */
   document.getElementById('infoBanner').style.display = 'block';
   renderCards(loadLocal(), false);
 }
 
 /* ══════════════════════════════════════════════════════
-   COMMENTS — SILENT RELOAD (after posting)
-   Always restores scroll so user stays in place
+   COMMENTS — SILENT RELOAD
 ══════════════════════════════════════════════════════ */
-async function silentReload(){
-  if(isOnline()){
+async function silentReload() {
+  if (isOnline()) {
     const remote = await fetchComments();
-    if(remote !== null){
-      renderCards(remote, true);  /* true = restore scroll */
-      return;
-    }
+    if (remote !== null) { renderCards(remote, true); return; }
   }
   renderCards(loadLocal(), true);
 }
@@ -1699,14 +1982,13 @@ document.getElementById('submitBtn').addEventListener('click', async () => {
   const cEl = document.getElementById('userComment');
   const txt = cEl.value.trim();
 
-  /* Validate */
-  if(!txt){
+  if (!txt) {
     cEl.style.animation   = 'none';
     cEl.style.borderColor = '#ef4444';
     cEl.style.boxShadow   = '0 0 0 3px rgba(239,68,68,0.2)';
-    cEl.offsetHeight; /* force reflow */
+    cEl.offsetHeight;
     cEl.style.animation   = 'shake 0.4s ease';
-    setTimeout(()=>{
+    setTimeout(() => {
       cEl.style.borderColor = '';
       cEl.style.boxShadow   = '';
       cEl.style.animation   = '';
@@ -1716,8 +1998,8 @@ document.getElementById('submitBtn').addEventListener('click', async () => {
 
   const btn = document.getElementById('submitBtn');
   const sp  = btn.querySelector('.btn-text');
-  btn.disabled     = true;
-  sp.textContent   = '✦ Posting…';
+  btn.disabled   = true;
+  sp.textContent = '✦ Posting…';
 
   const obj = {
     name      : nEl.value.trim() || 'Anonymous Reader',
@@ -1726,52 +2008,40 @@ document.getElementById('submitBtn').addEventListener('click', async () => {
     timestamp : Date.now()
   };
 
-  /* Save scroll NOW before any DOM changes */
   const scrollY = window.scrollY;
 
-  if(isOnline()){
+  if (isOnline()) {
     await postComment(obj);
-
-    /* Clear form */
     nEl.value = '';
     cEl.value = '';
     document.getElementById('charCount').textContent = '0 / 500';
 
-    /* Optimistic update — show comment immediately, keep scroll */
     const localArr = loadLocal();
     localArr.push(obj);
     saveLocal(localArr);
     renderCards(localArr, true);
 
-    /* Success feedback */
     sp.textContent       = '✦ Posted! ✓';
     btn.style.background = 'linear-gradient(135deg,#059669,#0891b2)';
 
-    /* After 2s — silently reload from server to get all public comments */
     setTimeout(async () => {
       btn.disabled         = false;
       sp.textContent       = '✦ Leave Your Mark';
       btn.style.background = '';
-      await silentReload(); /* scroll-safe reload */
+      await silentReload();
     }, 2000);
-
     return;
   }
 
-  /* ── Local-only fallback ── */
   const arr = loadLocal();
   arr.push(obj);
   saveLocal(arr);
-
   nEl.value = '';
   cEl.value = '';
   document.getElementById('charCount').textContent = '0 / 500';
-
   sp.textContent       = '✦ Saved Locally ✓';
   btn.style.background = 'linear-gradient(135deg,#d97706,#dc2626)';
-
-  renderCards(arr, true); /* scroll-safe */
-
+  renderCards(arr, true);
   setTimeout(() => {
     btn.disabled         = false;
     sp.textContent       = '✦ Leave Your Mark';
@@ -1779,8 +2049,7 @@ document.getElementById('submitBtn').addEventListener('click', async () => {
   }, 2200);
 });
 
-/* Char counter */
-document.getElementById('userComment').addEventListener('input', function(){
+document.getElementById('userComment').addEventListener('input', function () {
   document.getElementById('charCount').textContent = `${this.value.length} / 500`;
 });
 
@@ -1797,4 +2066,4 @@ updateUI();
 loadAndRenderComments();
 </script>
 </body>
-</html> 
+</html>
